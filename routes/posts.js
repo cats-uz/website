@@ -1,21 +1,21 @@
 const express = require("express")
 
+const {
+    getPosts,
+    getPost,
+    createPost,
+} = require("../controllers/postController.js")
+
 const router = express.Router()
 
 // GET all posts
-router.get("/", (req, res) => {
-    res.json("GET all posts!")
-})
+router.get("/", getPosts)
 
 // GET a single post
-router.get("/:id", (req, res) => {
-    res.json("GET a single post!")
-})
+router.get("/:id", getPost)
 
 // POST a new post
-router.post("/", (req, res) => {
-    res.json("POST a new post")
-})
+router.post("/", createPost)
 
 // DELETE a post
 router.delete("/:id", (req, res) => {
