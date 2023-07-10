@@ -1,23 +1,21 @@
-const express = require("express")
-require("dotenv").config()
+const express = require("express");
+const morgan = require("morgan");
+require("dotenv").config();
 
-const app = express()
+const app = express();
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 
-const postRoutes = require("./routes/posts.js")
-
+const postRoutes = require("./routes/posts.js");
+const userRouter = require("./routes/user");
 // middleware
-app.use(express.json())
+app.use(express.json());
+app.use(morgan("tiny"));
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
-})
-
-app.use('/posts', postRoutes)
-
-app.listen(PORT, () => {
-    console.log(`App is running on http://${HOST}:${PORT}`)
-})
+app.use("/posts", postRoutes);
+app.use("/user", userRouter);
+module.exports.app = app;
+module.exports.server = app.listen(PORT, () => {
+  console.log(`App is running on http://${HOST}:${PORT}`);
+});
