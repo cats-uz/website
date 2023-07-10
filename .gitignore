@@ -1,7 +1,6 @@
 /node_modules
 .env
 dist
-package-lock.json
 .idea
 .idea/cat.uz-website.iml
 .idea/modules.xml
