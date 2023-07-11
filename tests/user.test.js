@@ -1,6 +1,11 @@
 const request = require("supertest");
 const { app, server } = require("../index");
-afterAll(() => {
+const mongoose = require("mongoose");
+beforeAll(async () => {
+  await mongoose.connect(process.env.DB_URL);
+});
+afterAll(async () => {
+  await mongoose.connection.close();
   server.close();
 });
 
