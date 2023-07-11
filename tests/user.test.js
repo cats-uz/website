@@ -10,12 +10,12 @@ afterAll(async () => {
 });
 
 describe("USER routes", () => {
-  it("should return Hello World with 200 status code", async () => {
+  it("should return 'Created' with 201 status code", async () => {
     const res = await request(app).post("/user/register").send({
       name: "Sanjarbek",
       username: "ismatovsanjarbek",
       password: "12345678",
     });
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(201);
   });
 });
