@@ -7,7 +7,7 @@ const passwordGenerator = async (password) => {
 const passwordChecker = async (originalPassword, currentPassword) => {
     return await bcrypt.compare(currentPassword, originalPassword)
 }
-export {
+module.exports =  {
     passwordGenerator,
     passwordChecker
 }
