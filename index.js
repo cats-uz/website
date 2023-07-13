@@ -14,8 +14,8 @@ const userRouter = require("./routes/user");
 app.use(express.json());
 app.use(morgan("tiny"));
 
-app.use("/posts", postRoutes);
 app.use("/user", userRouter);
+app.use("/posts", postRoutes);
 
 module.exports.app = app;
 module.exports.server = app.listen(PORT, () => {

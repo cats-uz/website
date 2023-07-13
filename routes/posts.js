@@ -4,6 +4,8 @@ const {
     getPosts,
     getPost,
     createPost,
+    deletePost,
+    updatePost
 } = require("../controllers/postController.js")
 
 const router = express.Router()
@@ -18,13 +20,9 @@ router.get("/:id", getPost)
 router.post("/", createPost)
 
 // DELETE a post
-router.delete("/:id", (req, res) => {
-    res.json("DELETE a post")
-})
+router.delete("/:id", deletePost)
 
 // UPDATE a post
-router.patch("/:id", (req, res) => {
-    res.json("UPDATE a post")
-})
+router.patch("/:id", updatePost)
 
 module.exports = router
