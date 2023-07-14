@@ -16,8 +16,5 @@ app.use(morgan("tiny"));
 
 app.use("/user", userRouter);
 app.use("/posts", postRoutes);
-
-module.exports.app = app;
-module.exports.server = app.listen(PORT, () => {
-  console.log(`App is running on http://${HOST}:${PORT}`);
-});
+const server = app.listen(PORT || 4000);
+module.exports = { app, server };

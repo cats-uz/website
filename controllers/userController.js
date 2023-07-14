@@ -12,7 +12,7 @@ class UserController {
     const { error } = userValidator(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     const newUser = new User(req.body);
-    newUser.password = await passwordGenerator(req.body.password)
+    newUser.password = await passwordGenerator(req.body.password);
     process.env.NODE_ENV !== "test" && (await newUser.save());
     res.status(201).send("Created!");
   }
@@ -21,10 +21,11 @@ class UserController {
    * @param {import('mongoose').Response} res
    * @returns {Promise<void>}
    */
-  async login(req, res){
-    const {error} = userValidator(req.body, "login")
-    const token = tokenGenerator(req.body.username)
-    if(error) return res.status(200).setHeader("x-token", token).send("Success")
+  async login(req, res) {
+    const { error } = userValidator(req.body, "login");
+    if (error) return res.status(400).send("Fail");
+    const token = tokenGenerator(req.body.username);
+    return res.status(200).setHeader("x-token", token).send("Success");
   }
 }
 module.exports = UserController;
