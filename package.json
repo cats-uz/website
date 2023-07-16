@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "build": "esbuild index.js --outfile=dist/bundle.js --minify --bundle --platform=node --packages=external",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles  --forceExit --runInBand"
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles  --forceExit"
   },
   "keywords": [],
   "author": "",
